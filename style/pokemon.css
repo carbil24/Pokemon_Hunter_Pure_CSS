@@ -1,0 +1,445 @@
+/*-------------POKEMON.CSS---------------*/
+
+body{
+	margin:0;
+	background-image:url(../images/background.jpg);
+	background-repeat:no-repeat; 
+	background-position:center;
+	background-attachment:fixed;
+	background-position:50%;
+	background-size:cover;
+}
+
+main{
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+
+input[type=radio]{
+	display:none;
+}
+
+
+/*-----Fonts------*/
+@font-face{
+	font-family:pokemon;
+	src: url("../fonts/pokemon_solid.ttf");
+}
+
+
+/*-------First Screen--------*/
+
+.start:hover label {
+	cursor:grab;
+}
+
+#game_instructions{
+	top:1%;
+	left:12%;
+	position:inherit;
+	height:82%;
+	width:40%;	
+	font-family:pokemon;
+	color:#e4241d;
+	font-size:20px;
+	padding:10px;
+	letter-spacing:3px;
+	list-style-type:none;
+	overflow:auto;
+
+}
+
+#game_instructions ul{
+	list-style-image:url(../images/pokeball_bullet.png);
+	list-style-position:inside;
+}
+
+#game_instructions h1{
+	font-size:2em;
+	color:#3663ad;
+	text-shadow:2px 2px 5px #ffcb05
+}
+
+#game_instructions h2{
+	color:#ffcb05;
+	text-shadow:2px 2px 5px #3663ad
+}
+
+.logo{
+	position:inherit;	
+	top:10%;
+	right:5%;
+	animation:rotation 5s infinite linear;
+	transform-origin:center;
+}
+
+span:not(.start){
+	display:none;
+}
+
+.timer{
+	display:none;
+	width:300px;
+	height:50px;
+	position:inherit;
+    top:0;
+	left:25%;
+	border:10px solid #3664ad;
+	background-color:#ffcb05;
+	border-radius:60px;
+	letter-spacing:5px;
+}
+
+.timer span{
+    position:inherit;
+    background:repeating-linear-gradient(-45deg, #3466af, #e5241d 25px, #3466af 50px);
+    width:300px;
+    height:50px;
+    animation:timer 37s linear;
+	animation-play-state:paused;
+    display:none;
+    top:0;
+ 	background-color:#ffcb05;
+	border-radius:60px;
+}
+
+.start,.next_window{
+	position:inherit;
+	font-family:pokemon;
+	color:#3664ad;
+	display:inline-block;
+	font-size:25px;
+	padding:0 50px;
+	border:10px solid #3664ad;
+	background-color:#ffcb05;
+	border-radius:60px;
+	letter-spacing:5px;
+}
+
+.start{
+	top:86%;
+	left:20%;
+}
+
+.next_window{
+	top:35%;
+	left:120%;
+}
+
+.next_window:hover label{
+	cursor:grab;
+}
+
+/*---------------Navigation---------------*/
+
+#first_character, #second_character, #third_character, 
+#fourth_character, #fifth_character, #sixth_character, #last_screen{
+	display:none;
+}
+
+#second_window:checked~#first_character,
+#third_window:checked~#second_character,
+#fourth_window:checked~#third_character,
+#fifth_window:checked~#fourth_character,
+#sixth_window:checked~#fifth_character,
+#seventh_window:checked~#sixth_character,
+#last_window:checked~#last_screen{
+	display:block;
+}
+
+#last_window.next:checked~.timer,
+#last_window.next:checked~.timer>span,
+#last_window.next:checked~.game_over{
+	display:none;
+	animation:timer 35s linear;
+	animation-play-state:paused;
+}
+
+.next:checked~span,.next:checked~#game_instructions{	
+	display:none;
+}
+
+.next:checked~.timer>span{
+	display:block;
+	animation:timer 35s linear;
+}
+
+.next:checked~.timer{
+	display:block;
+}
+
+.next:checked~.game_over{
+	display:block;
+	animation:gameover 37s linear forwards;
+}
+
+/*-------------Other Screens-----------------*/
+
+
+
+.character_img:hover{
+	cursor:grab;
+}
+
+span.advice{
+	display:block;
+}
+
+span.well_done{
+	display:none;
+}
+
+.advice, .well_done{
+	position:inherit;
+	width:100%;
+	font-family:pokemon;
+	font-size:20px;
+	letter-spacing:3px;
+	list-style-type:none;
+	text-align:center;
+}
+
+.advice{
+	color:#e4241d;
+}
+
+.well_done{
+	color:#3663ad;
+}
+
+.options_div{
+	position:inherit;
+	display:none;
+	top:45%;
+	left:30%;
+}
+
+.options_div:hover li label{
+	cursor:grab;
+}
+
+.options_div ul{
+	font-family:pokemon;
+	letter-spacing:5px;
+	color:#e4241d;
+	list-style-image:url(../images/pokeball_bullet.png);
+	font-size:20px;
+}
+
+.character_img, .character_div{
+	top:15%;
+	left:28%;
+	position:inherit;
+	width:205px;
+	height:205px;
+}
+
+.character_img{
+	background-image:url(../images/pokeball.png);
+}
+
+
+
+.character+.character_div{
+	opacity:0;
+}
+.character+#pikachu_div{
+	background-image:url(../images/pikachu.png);
+}
+
+.character+#charmander_div{
+	background-image:url(../images/charmander.png);
+}
+
+.character+#blastoise_div{
+	background-image:url(../images/blastoise.png);
+}
+
+.character+#jigglypuff_div{
+	background-image:url(../images/jigglypuff.png);
+}
+
+.character+#butterfree_div{
+	background-image:url(../images/butterfree.png);
+}
+
+.character+#mew_div{
+	background-image:url(../images/mew.png);
+}
+
+.character:checked~.advice{
+	display:none;
+}
+
+.character_options:checked~.well_done{
+	display:block;
+}
+
+.character:checked+.character_div{
+	transition:opacity 5s linear;
+	opacity:1;
+}
+
+.character:checked~.character_img{
+	transition:opacity 5s linear;
+	opacity:0;
+}
+
+.character:checked~.options_div{
+	display:block;
+}
+
+.character_options:checked~#pikachu_img{
+	background-image:url(../images/pikachu.png);
+	opacity:0;
+}
+
+.character_options:checked~#charmander_img{
+	background-image:url(../images/charmander.png);
+	opacity:0;
+	
+}.character_options:checked~#blastoise_img{
+	background-image:url(../images/blastoise.png);
+	opacity:0;
+	
+}.character_options:checked~#jigglypuff_img{
+	background-image:url(../images/jigglypuff.png);
+	opacity:0;
+	
+}.character_options:checked~#butterfree_img{
+	background-image:url(../images/butterfree.png);
+	opacity:0;
+	
+}.character_options:checked~#mew_img{
+	background-image:url(../images/mew.png);
+	opacity:0;
+}
+
+.character_options:checked~.next_window{
+	display:block;
+}
+
+.character_options:checked~.advice{
+	display:none;
+}
+
+
+/*------------Last Screen--------*/
+
+#congrats{
+	top:-10%;
+	left:12%;
+	position:inherit;
+	font-family:pokemon;
+	color:#e4241d;
+	font-size:20px;
+	padding:10px;
+	letter-spacing:3px;
+}
+
+#congrats h1{
+	font-size:2em;
+	color:#3663ad;
+	text-shadow:2px 2px 5px #ffcb05
+}
+
+#congrats h2{
+	color:#ffcb05;
+	text-shadow:2px 2px 5px #3663ad
+}
+
+.ash_img{
+	top:40%;
+	left:30%;
+	position:inherit;
+	transition:transform 3s linear;
+	transform:scale(1, 1) rotate(360deg);	
+}
+.ash_img:hover{
+	transition:transform 3s linear;
+	transform:scale(1.2, 1.2) rotate(-360deg);	
+}
+
+.new_game{
+	display:block;
+	position:inherit;
+	top:95%;
+	left:15%;
+	color:#3664ad;
+	font-size:25px;
+	padding:0 50px;
+	border:10px solid #3664ad;
+	background-color:#ffcb05;
+	border-radius:60px;
+}
+
+.new_game a{
+	color:#3664ad;
+	text-decoration:none;
+	font-family:pokemon;
+	letter-spacing:5px;
+}
+
+/*------------Game Over Screen------------*/
+.game_over{
+    position:fixed;
+	top:0;
+	left:0;
+	padding:0 700px 250px 700px;
+    z-index:100000; 
+    background-color:rgba(0,0,0);
+    animation:gameover 37s linear forwards;
+    animation-play-state:paused;
+    font-size:80px;
+	text-align:center; 
+    text-indent:0;  
+}
+
+.game_over_img{
+	display:block;
+	top:500px; 
+	left:50px; 
+}
+
+.game_over div{
+	font-family:pokemon;
+	letter-spacing:5px;
+	color:#e4241d;
+}
+
+.tray_again{
+	display:block;
+	position:absolute;
+	top:750px;
+	left:810px;
+	color:#3664ad;
+	font-size:25px;
+	padding:0 50px;
+	border:10px solid #3664ad;
+	background-color:#ffcb05;
+	border-radius:60px;
+}
+
+.tray_again a{
+	color:#3664ad;
+	text-decoration:none;
+	font-family:pokemon;
+	letter-spacing:5px;
+}
+
+/*--------------Key Frames-------------- */
+@keyframes timer{
+0%{width:10px;}
+100%{width:300px; display:block;}
+}
+
+@keyframes gameover{
+0%{top:-5000px;bottom:100%;}
+90%{top:-5000px;bottom:100%;}
+100%{ top:0px;}
+}
+
+@keyframes rotation{
+  100% {transform: rotateY(360deg)}
+}
